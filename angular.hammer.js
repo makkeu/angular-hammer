@@ -110,9 +110,6 @@
                 setupRecognizerWithOptions(hammer, recognizerOpts);
 
                 hammer.on(options.event, handler);
-                scope.$on('$destroy', function () {
-                  hammer.off(options.event, handler);
-                });
               }
             } else {
               if (angular.isArray(recognizerOpts)) {
@@ -150,10 +147,10 @@
               }
 
               hammer.on(eventName, handler);
-              scope.$on('$destroy', function () {
-                hammer.off(eventName, handler);
-              });
             }
+            scope.$on('$destroy', function () {
+              hammer.destroy();
+            });
           }
         };
       }]);
