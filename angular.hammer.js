@@ -102,9 +102,7 @@
                   setupRecognizerWithOptions(hammer, options);
 
                   hammer.on(options.event, handler);
-                  scope.$on('$destroy', function () {
-                    hammer.off(options.event, handler);
-                  });
+
                 });
               } else if (angular.isObject(recognizerOpts)) {
                 setupRecognizerWithOptions(hammer, recognizerOpts);
